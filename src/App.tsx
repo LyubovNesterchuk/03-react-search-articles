@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/components/App.tsx
+import { useState } from "react";
+import axios from "axios";
+import SearchForm from "./SearchForm/SearchForm";
+import type { Article } from "./types/Article";
+import ArticleList from "./ArticleList/ArticleList";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface ArticlesHttpResponse {
+  hits: Article[];
 }
 
-export default App
+export default function App() {
+
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const handleSearch = async (topic: string) => {
+ 
+    try {
+      setIsLoading(true);
+      setIsError(false);
+
+      const response = await axios.get<ArticlesHttpResponse>(
+        `https://hn.algolia.com/api/v1/search?query=${topic}`
+      );
+      console.log(response.data);
+      setArticles(response.data.hits);
+
+    } catch {
+        setIsError(true);
+
+    } finally {
+        setIsLoading(false);
+    }
+  };
+  
+return (
+    <>
+      <SearchForm onSubmit={handleSearch} />
+      {isLoading && <p>Loading data, please wait...</p>} 
+      
+      {isError && <p>Whoops, something went wrong! Please try again!</p>}
+    
+      {articles.length > 0 && <ArticleList items={articles} />}
+    </>
+  );
+}

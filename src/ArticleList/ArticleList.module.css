@@ -1,0 +1,38 @@
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 24px auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  background: #fef8ec;
+  border: 2px solid #e4c9a1;
+  border-left: 6px solid #c27a63;
+  padding: 16px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(150, 110, 80, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: "Georgia", serif;
+}
+
+.item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(120, 80, 40, 0.2);
+}
+
+.link {
+  text-decoration: none;
+  color: #5a4e3c;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #a86450;
+  text-decoration: underline wavy #d8a47f;
+}

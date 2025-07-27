@@ -1,0 +1,50 @@
+.form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 800px;
+  background-color: #fffaf2;
+  border: 3px double #c4a484;
+  border-radius: 20px;
+  box-shadow: 0 6px 12px rgba(120, 80, 40, 0.15);
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  background-blend-mode: soft-light;
+}
+
+.input {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #c2b280;
+  border-radius: 12px;
+  background-color: #fdf7ee;
+  color: #5a4e3c;
+  font-family: "Courier New", monospace;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #a0846a;
+  background-color: #fef8ec;
+}
+
+.button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background: linear-gradient(to right, #d8a47f, #c27a63);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.2s;
+  font-family: "Georgia", serif;
+}
+
+.button:hover {
+  background: linear-gradient(to right, #e6b89c, #d3876d);
+  transform: scale(1.05);
+}
