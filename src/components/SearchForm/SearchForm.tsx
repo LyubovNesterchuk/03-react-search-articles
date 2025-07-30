@@ -1,4 +1,4 @@
-import css from "./SearchForm.module.css"
+import css from './SearchForm.module.css';
 
 interface SearchFormProps {
   onSubmit: (topic: string) => void;

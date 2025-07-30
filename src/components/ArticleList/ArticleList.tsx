@@ -1,4 +1,5 @@
-import type { Article } from '../types/Article';
+
+import type { Article } from '../../types/Article';
 import css from './ArticleList.module.css';
 
 interface ArticleListProps {

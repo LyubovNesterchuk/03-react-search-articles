@@ -1,12 +1,10 @@
-// src/components/App.tsx
 import { useState } from "react";
-import SearchForm from "./SearchForm/SearchForm";
-import type { Article } from "./types/Article";
-import ArticleList from "./ArticleList/ArticleList";
-import { fetchArticles } from "./services/articleService";
-import Loader from "./Loader/Loader";
-import Title from "./Title/Title";
-
+import SearchForm from "../SearchForm/SearchForm";
+import type { Article } from "../../types/Article";
+import { fetchArticles } from "../../services/articleService";
+import Loader from "../Loader/Loader";
+import Title from "../Title/Title";
+import ArticleList from "../ArticleList/ArticleList";
 
 
 export default function App() {
@@ -16,6 +14,7 @@ export default function App() {
 
   const handleSearch = async (topic: string) => {
     try {
+      setArticles([]);
       setIsLoading(true);
       setIsError(false);
       const data = await fetchArticles(topic);
